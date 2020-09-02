@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="memberMapper">
+
+	<insert id="insertMember" parameterType="memberDTO">
+		INSERT INTO TB_MEMBER (MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_MAIL, MEMBER_PHONE)
+		 VALUES (#{MEMBER_ID}, #{MEMBER_PW}, #{MEMBER_NAME}, #{MEMBER_MAIL}, #{MEMBER_PHONE})
+	</insert>
+	
+	<select id="login" parameterType="memberDTO" resultType="int">
+		SELECT COUNT(*) FROM TB_MEMBER WHERE MEMBER_ID = #{MEMBER_ID} AND MEMBER_PW = #{MEMBER_PW}
+	</select>
+	
+	<select id="userInfo" parameterType="memberDTO" resultType="memberDTO">
+		SELECT * FROM TB_MEMBER WHERE MEMBER_ID = #{MEMBER_ID}
+	</select>
+
+</mapper>
